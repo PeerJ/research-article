@@ -2,6 +2,7 @@ Polymer({
   attached: function() {
     this.async(this.references);
     this.async(this.figures);
+    this.async(this.orcid);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -58,6 +59,27 @@ Polymer({
     $('a.figure-link').on('click', function() {
         modal.modal('show');
         content.load(this.href + ' figure');
+        return false;
+    });
+  },
+  orcid: function() {
+    var modal = $('<div id="orcid-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
+
+    var content = modal.find('.modal-content').text('Loading…');
+
+    modal.appendTo(document.body).modal({ show: false });
+
+    modal.on('hidden.bs.modal', function() {
+        content.html('Loading…');
+    });
+
+    $('a[href^="https://orcid.org/"]').tooltip({
+      placement: 'bottom'
+    }).on('click', function() {
+        modal.modal('show');
+        var orcid = $(this).attr('href').replace(/^https?:\/\/orcid\.org\//, '');
+        var element = $('<orcid-profile/>').attr('orcid', orcid);
+        content.html(element);
         return false;
     });
   }

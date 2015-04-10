@@ -170,3 +170,9 @@ figure img {
   font-size: 120%;
   font-weight: 100;
 }
+
+#orcid-modal orcid-profile {
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+}

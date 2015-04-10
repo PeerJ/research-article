@@ -8,7 +8,8 @@
   ],
   "main": "research-article.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5.4"
+    "polymer": "Polymer/polymer#^0.5.4",
+    "orcid-profile": "peerj/orcid-profile"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.2.3"
