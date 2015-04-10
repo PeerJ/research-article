@@ -1,0 +1,66 @@
+html, body, article {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.column {
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+}
+
+#main {
+  left: 0;
+  right: 35%;
+  padding: 0 2rem 5rem;
+}
+
+#sidebar {
+  left: 65%;
+  right: 0;
+  padding: 0;
+}
+
+#sidebar > div > *,
+#sidebar > aside > *,
+#sidebar section > *:not(h2) {
+  margin: 0 1.5rem;
+}
+
+#sidebar h2 {
+  font-size: 150%;
+  font-weight: 200;
+  margin: 2rem 0;
+  padding: 1rem 1rem;
+  background: #eee;
+}
+
+#sidebar h3 {
+  font-size: 100%;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+#sidebar div:first-of-type h2 {
+  margin-top: 0;
+}
+
+#abstract {
+  padding: 1em 0;
+}
+
+#metrics h2 {
+  display: none;
+}
+
+.altmetric-embed > div:first-child {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.altmetric-embed p {
+  display: none;
+}
