@@ -13,7 +13,6 @@
 
 <!-- scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/3.1.0/markdown-it.js"></script>
 
@@ -35,8 +34,19 @@ A research article.
 -->
 <polymer-element name="research-article" extends="article">
   <template>
+    <link rel="stylesheet" href="research-article-layout.css">
 
-    <content></content>
+    <!-- main column -->
+    <div class="column column-main">
+      <content select="header"></content>
+      <content select="section"></content>
+    </div>
+
+    <!-- sidebar -->
+    <div class="column column-sidebar">
+      <content select="footer"></content>
+    </div>
   </template>
+
   <script src="research-article.js"></script>
 </polymer-element>

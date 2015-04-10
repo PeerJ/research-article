@@ -24,8 +24,14 @@ h2 {
   margin-bottom: 2rem;
 }
 
-h3 {
+section h3 {
   font-size: 140%;
+}
+
+footer h3 {
+  font-size: 100%;
+  font-weight: normal;
+  margin-bottom: 0;
 }
 
 article p {
@@ -33,7 +39,7 @@ article p {
   color: #333;
 }
 
-#sidebar {
+.column-sidebar {
   overflow-x: hidden;
 }
 

@@ -1,0 +1,32 @@
+@media screen and (min-width: 768px) {
+  :host .column {
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+  }
+
+  :host .column-main {
+    left: 0;
+    right: 35%;
+    padding: 0 2rem 5rem;
+  }
+
+  :host .column-sidebar {
+    left: 65%;
+    right: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :host {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  :host footer h3, footer h3 {
+    font-size: 100%;
+  }
+}
