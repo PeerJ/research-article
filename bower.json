@@ -8,15 +8,12 @@
   ],
   "main": "research-article.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5.4",
+    "polymer": "Polymer/polymer#~0.5.5",
     "orcid-profile": "peerj/orcid-profile",
     "bootstrap": "~3.3.4",
-    "webcomponentsjs": "~0.6.0"
+    "webcomponentsjs": "~0.5.5"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.2.3"
-  },
-  "resolutions": {
-    "webcomponentsjs": "~0.6.0"
   }
 }
