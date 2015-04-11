@@ -3,6 +3,7 @@ Polymer({
     this.async(this.references);
     this.async(this.figures);
     this.async(this.orcid);
+    this.async(this.mathjax);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -81,5 +82,22 @@ Polymer({
         content.html(element);
         return false;
     });
+  },
+  mathjax: function() {
+    window.MathJax = {
+      messageStyle: 'none',
+      'HTML-CSS': {
+          linebreaks: { automatic: true },
+          scale: 80
+      },
+      menuSettings: {
+          zoom: 'Click'
+      },
+      elements: this.children
+    };
+
+    var script = document.createElement('script');
+    script.src = 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe';
+    document.querySelector('head').appendChild(script);
   }
 });
