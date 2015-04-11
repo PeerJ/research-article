@@ -6,7 +6,6 @@ html, body, article {
 }
 
 footer > div > *,
-footer > aside > *,
 footer section > *:not(h2) {
   margin: 0 1.5rem;
 }

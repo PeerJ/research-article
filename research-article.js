@@ -5,6 +5,7 @@ Polymer({
     this.async(this.thumbnails);
     this.async(this.orcid);
     this.async(this.mathjax);
+    this.async(this.metrics);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -117,6 +118,24 @@ Polymer({
     };
 
     this.addScript('https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe');
+  },
+  metrics: function() {
+    var doi = $('#doi').data('doi');
+
+    if (doi) {
+      var container = $('<div/>', { id: 'metrics' }).addClass('hidden-print');
+
+      $('<div/>', {
+        'data-badge-type': 'medium-donut',
+        'data-badge-details': 'below',
+        'data-hide-no-mentions': 'true',
+        'data-doi': doi
+      }).addClass('altmetric-embed').appendTo(container);
+
+      $('footer').prepend(container);
+
+      this.addScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js');
+    }
   },
   addScript: function(src) {
     var script = document.createElement('script');
