@@ -162,8 +162,16 @@ figure img {
   vertical-align: middle;
 }
 
+#figures > figure {
+  padding-top: 1rem;
+}
+
+#figures > figure:first-of-type {
+  margin-top: -1rem;
+}
+
 #figures > figure:not(:last-of-type) {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .article-date {
