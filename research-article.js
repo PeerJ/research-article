@@ -2,6 +2,7 @@ Polymer({
   attached: function() {
     this.async(this.references);
     this.async(this.figures);
+    this.async(this.thumbnails);
     this.async(this.orcid);
     this.async(this.mathjax);
   },
@@ -57,11 +58,30 @@ Polymer({
         content.html('Loading…');
     });
 
-    $('a.figure-link').on('click', function() {
+    $(this).on('click', 'a.figure-link', function() {
         modal.modal('show');
         content.load(this.href + ' figure');
         return false;
     });
+  },
+  thumbnails: function() {
+    var figures = $('.figure-wrap .figure-link').filter(function() {
+      return $(this).find('img').length;
+    });
+
+    if (!figures.length) {
+      return;
+    }
+
+    var container = document.createElement('div');
+    container.id = 'figure-thumbnails';
+
+    figures.each(function() {
+      var link = $(this).clone().addClass('figure-thumbnail').get(0);
+      container.appendChild(link);
+    });
+
+    this.querySelector('header').appendChild(container);
   },
   orcid: function() {
     var modal = $('<div id="orcid-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
