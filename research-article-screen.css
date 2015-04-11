@@ -119,9 +119,11 @@ figure img {
   margin-right: 2px;
 }
 
-.author [itemprop=sameAs] img {
-  width: 100%;
-  height: 100%;
+.author a[data-orcid] {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  background: url("https://orcid.org/sites/default/files/images/orcid_16x16.png") left center no-repeat;
 }
 
 #affiliations .affiliation-location {

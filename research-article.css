@@ -2,13 +2,6 @@
   overflow-x: hidden;
 }
 
-::content .author a[data-orcid] {
-  height: 16px;
-  width: 16px;
-  display: inline-block;
-  background: url("https://orcid.org/sites/default/files/images/orcid_16x16.png") left center no-repeat;
-}
-
 @media screen and (min-width: 768px) {
   :host .column {
     height: 100%;
