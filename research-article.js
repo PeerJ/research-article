@@ -5,7 +5,6 @@ Polymer({
     this.async(this.thumbnails);
     this.async(this.orcid);
     this.async(this.mathjax);
-    this.async(this.genius);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -118,9 +117,6 @@ Polymer({
     };
 
     this.addScript('https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe');
-  },
-  genius: function() {
-    this.addScript('https://genius.codes/'); // http://genius.com/Genius-how-to-use-genius-to-make-your-site-annotatable-annotated
   },
   addScript: function(src) {
     var script = document.createElement('script');
