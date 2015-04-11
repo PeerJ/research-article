@@ -2,6 +2,13 @@
   overflow-x: hidden;
 }
 
+::content .author a[data-orcid] {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  background: url("https://orcid.org/sites/default/files/images/orcid_16x16.png") left center no-repeat;
+}
+
 @media screen and (min-width: 768px) {
   :host .column {
     height: 100%;
@@ -30,7 +37,7 @@
     padding-bottom: 4rem;
   }
 
-  :host footer h3, footer h3 {
+  :host footer h3, ::content footer h3 {
     font-size: 100%;
   }
 }

@@ -73,12 +73,11 @@ Polymer({
         content.html('Loading…');
     });
 
-    $('a[href^="https://orcid.org/"]').tooltip({
+    $('a[data-orcid]').tooltip({
       placement: 'bottom'
     }).on('click', function() {
         modal.modal('show');
-        var orcid = $(this).attr('href').replace(/^https?:\/\/orcid\.org\//, '');
-        var element = $('<orcid-profile/>').attr('orcid', orcid);
+        var element = $('<orcid-profile/>').attr('orcid', $(this).data('orcid'));
         content.html(element);
         return false;
     });
