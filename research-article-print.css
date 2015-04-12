@@ -221,11 +221,12 @@ tfoot { display:table-footer-group }
   margin-bottom: 1em;
 }
 
+#authors > span:before {
+  content: "✎";
+}
+
 #authors > span {
-  border-left: 1px solid #00a6fc;
-  padding: 2px 5px;
-  display: inline-block;
-  border-radius: 5px;
+  margin-right: 0.5em;
 }
 
 .inline-list > span:not(:last-child):after {
