@@ -63,29 +63,22 @@ h3 {
   margin-bottom: 0.25em;
 }
 
-footer {
-  font-family: "Helvetica Neue", sans-serif;
-}
-
-footer {
-  font-size: 90%;
-  background-color: #eee;
-  padding: 1em;
-  margin: 2em 0;
-}
-
 footer > div:first-of-type h2 {
   margin-top: 0;
 }
 
-footer h2 {
-  margin-top: 1em;
+footer > * {
+  display: none;
 }
 
-footer h3 {
-  font-size: 100%;
-  font-family: inherit;
-  margin-bottom: 0;
+footer > #references {
+  display: block;
+  page-break-before: always;
+}
+
+footer > #figures {
+  display: block;
+  page-break-before: always;
 }
 
 p {
