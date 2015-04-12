@@ -116,7 +116,6 @@ figure {
   margin: 1em 0;
   page-break-inside: avoid;
   text-align: center;
-  border-bottom: 1px solid #ddf;
 }
 
 figure img {
@@ -230,7 +229,7 @@ tfoot { display:table-footer-group }
 }
 
 #authors > span {
-  border-left: 2px solid #00a6fc;
+  border-left: 1px solid #00a6fc;
   padding: 2px 5px;
   display: inline-block;
   border-radius: 5px;
@@ -240,14 +239,11 @@ tfoot { display:table-footer-group }
   content: ", ";
 }
 
-figure img {
-  max-width: 100%;
-}
-
 .popover,
 .nav,
 .hide,
-.modal {
+.modal,
+#figure-thumbnails {
   display: none !important;
 }
 
