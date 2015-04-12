@@ -20,7 +20,7 @@ Polymer({
     });
 
     // start from the bottom, so the reference list gets re-ordered correctly
-    var links = $('#main a').get().reverse();
+    var links = $('section a').get().reverse();
 
     $(links).each(function() {
         if (typeof referenceLinks[this.href] === 'undefined') {
