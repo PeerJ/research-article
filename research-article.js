@@ -48,7 +48,9 @@ Polymer({
     });
   },
   figures: function() {
-    var modal = $(this.$['figure-modal']);
+    var modal = $('<div id="figure-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
+
+    modal.appendTo(document.body).modal({ show: false });
 
     var content = modal.find('.modal-content').text('Loading…');
 
@@ -63,7 +65,9 @@ Polymer({
     });
   },
   orcid: function() {
-    var modal = $(this.$['orcid-modal']);
+    var modal = $('<div id="orcid-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
+
+    modal.appendTo(document.body).modal({ show: false });
 
     var content = modal.find('.modal-content').text('Loading…');
 
