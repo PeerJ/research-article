@@ -2,10 +2,6 @@
   overflow-x: hidden;
 }
 
-:host .column-sidebar {
-  background-color: #eee;
-}
-
 @media screen and (min-width: 768px) {
   :host .column {
     height: 100%;
@@ -24,6 +20,7 @@
     left: 65%;
     right: 0;
     padding: 0;
+    background-color: #f6f6f6;
   }
 }
 
