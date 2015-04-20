@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../orcid-profile/orcid-profile.html">
+<link rel="import" href="../article-metrics/article-metrics.html">
 
 <!-- styles -->
 <link rel="stylesheet" media="screen" href="../bootstrap/dist/css/bootstrap.css">
@@ -36,9 +37,25 @@ A research article.
 
     <!-- sidebar -->
     <div class="column column-sidebar">
+      <template if="{{ doi }}">
+          <article-metrics doi="{{ doi }}"></article-metrics>
+      </template>
+
       <content select="footer"></content>
     </div>
   </template>
+
+  <div id="figure-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="orcid-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content"></div>
+    </div>
+  </div>
 
   <script src="research-article.js"></script>
 </polymer-element>

@@ -1,11 +1,10 @@
 Polymer({
   attached: function() {
+    this.doi = $('#doi').data('doi');
     this.async(this.references);
     this.async(this.figures);
-    this.async(this.thumbnails);
     this.async(this.orcid);
     this.async(this.mathjax);
-    this.async(this.metrics);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -49,11 +48,9 @@ Polymer({
     });
   },
   figures: function() {
-    var modal = $('<div id="figure-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
+    var modal = $(this.$['figure-modal']);
 
     var content = modal.find('.modal-content').text('Loading…');
-
-    modal.appendTo(document.body).modal({ show: false });
 
     modal.on('hidden.bs.modal', function() {
         content.html('Loading…');
@@ -65,31 +62,10 @@ Polymer({
         return false;
     });
   },
-  thumbnails: function() {
-    var figures = $('.figure-wrap .figure-link').filter(function() {
-      return $(this).find('img').length;
-    });
-
-    if (!figures.length) {
-      return;
-    }
-
-    var container = document.createElement('div');
-    container.id = 'figure-thumbnails';
-
-    figures.each(function() {
-      var link = $(this).clone().addClass('figure-thumbnail').get(0);
-      container.appendChild(link);
-    });
-
-    this.querySelector('header').appendChild(container);
-  },
   orcid: function() {
-    var modal = $('<div id="orcid-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
+    var modal = $(this.$['orcid-modal']);
 
     var content = modal.find('.modal-content').text('Loading…');
-
-    modal.appendTo(document.body).modal({ show: false });
 
     modal.on('hidden.bs.modal', function() {
         content.html('Loading…');
@@ -118,24 +94,6 @@ Polymer({
     };
 
     this.addScript('https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,Safe');
-  },
-  metrics: function() {
-    var doi = $('#doi').data('doi');
-
-    if (doi) {
-      var container = $('<div/>', { id: 'metrics' }).addClass('hidden-print');
-
-      $('<div/>', {
-        'data-badge-type': 'medium-donut',
-        'data-badge-details': 'below',
-        'data-hide-no-mentions': 'true',
-        'data-doi': doi
-      }).addClass('altmetric-embed').appendTo(container);
-
-      $('footer').prepend(container);
-
-      this.addScript('https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js');
-    }
   },
   addScript: function(src) {
     var script = document.createElement('script');
