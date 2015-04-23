@@ -80,6 +80,14 @@ figure img {
   display: block;
 }
 
+figure table {
+  background-color: white;
+}
+
+figure th {
+  background-color: #eee;
+}
+
 #authors {
   text-align: center;
   margin-top: 2rem;

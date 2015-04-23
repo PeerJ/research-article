@@ -2,6 +2,10 @@
   overflow-x: hidden;
 }
 
+::content section:last-of-type {
+  padding-bottom: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   :host .column {
     height: 100%;
@@ -13,7 +17,7 @@
   :host .column-main {
     left: 0;
     right: 35%;
-    padding: 0 2rem 5rem;
+    padding: 0 2rem;
   }
 
   :host .column-sidebar {
@@ -21,6 +25,26 @@
     right: 0;
     padding: 0;
     background-color: #f6f6f6;
+  }
+
+  :host .column-sidebar h2,
+  ::content footer h2 {
+    font-size: 150%;
+    font-weight: 200;
+    margin: 2rem 0;
+    padding: 1rem 1rem;
+    background: #eee;
+  }
+
+  :host .column-sidebar > div > *:not(h2),
+  ::content footer > div > *:not(h2),
+  ::content footer > section > *:not(h2) {
+    margin: 0 1.5rem;
+  }
+
+  :host .column-sidebar div:first-of-type h2,
+  ::content footer div:first-of-type h2 {
+    margin-top: 0;
   }
 }
 

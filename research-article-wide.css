@@ -5,29 +5,20 @@ html, body, article {
   overflow: hidden;
 }
 
-footer > div > *,
-footer section > *:not(h2) {
-  margin: 0 1.5rem;
-}
-
-footer h2 {
-  font-size: 150%;
-  font-weight: 200;
-  margin: 2rem 0;
-  padding: 1rem 1rem;
-  background: #eee;
-}
-
-footer div:first-of-type h2 {
-  margin-top: 0;
-}
-
 #abstract {
   padding: 1em 0;
 }
 
 #metrics h2 {
   display: none;
+}
+
+#references {
+  padding-bottom: 2rem;
+}
+
+#figures {
+  background-color: white;
 }
 
 .altmetric-embed > div:first-child {
