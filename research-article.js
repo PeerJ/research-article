@@ -1,6 +1,8 @@
 Polymer({
   attached: function() {
     this.doi = $('#doi').data('doi');
+    this.url = window.location.href;
+
     this.async(this.references);
     this.async(this.figures);
     this.async(this.orcid);

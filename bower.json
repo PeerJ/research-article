@@ -9,9 +9,10 @@
   "main": "research-article.html",
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.5",
-    "orcid-profile": "peerj/orcid-profile",
     "bootstrap": "~3.3.4",
-    "webcomponentsjs": "~0.5.5"
+    "webcomponentsjs": "~0.5.5",
+    "orcid-profile": "peerj/orcid-profile",
+    "article-metrics": "peerj/article-metrics"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.2.3"

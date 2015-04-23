@@ -37,9 +37,7 @@ A research article.
 
     <!-- sidebar -->
     <div class="column column-sidebar">
-      <template if="{{ doi }}">
-          <article-metrics doi="{{ doi }}"></article-metrics>
-      </template>
+      <article-metrics doi="{{ doi }}" url="{{ url }}"></article-metrics>
 
       <content select="footer"></content>
     </div>
