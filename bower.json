@@ -12,6 +12,7 @@
     "bootstrap": "~3.3.4",
     "webcomponentsjs": "~0.5.5",
     "orcid-profile": "peerj/orcid-profile",
+    "version-history": "peerj/version-history",
     "article-metrics": "peerj/article-metrics"
   },
   "devDependencies": {

@@ -1,12 +1,13 @@
 Polymer({
   attached: function() {
-    this.doi = $('#doi').data('doi');
     this.url = window.location.href;
+    this.doi = $('head > meta[name=citation_doi]').attr('content');
 
     this.async(this.references);
     this.async(this.figures);
     this.async(this.orcid);
     this.async(this.mathjax);
+    this.async(this.releases);
   },
   references: function() {
     var referencesList = $('#references > ul');
@@ -85,6 +86,32 @@ Polymer({
         content.html(element);
         return false;
     });
+  },
+  releases: function() {
+    var link = $('[rel=source][data-github]');
+
+    if (!link.length) {
+      return;
+    }
+
+    var container = link.parent();
+    var url = this.url;
+
+    var button = $('<button/>', {
+      type: 'button',
+      html: '&darr; show version history'
+    });
+
+    var showVersionHistory = function() {
+      var node = document.createElement('version-history');
+      node.github = link.data('github');
+      node.url = url;
+
+      container.append(node);
+      $(this).remove();
+    };
+
+    button.addClass('btn btn-link btn-mini').on('click', showVersionHistory).appendTo(container);
   },
   mathjax: function() {
     window.MathJax = {

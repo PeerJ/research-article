@@ -45,6 +45,12 @@ article p {
   overflow-x: hidden;
 }
 
+footer dt {
+  font-weight: 100;
+  font-size: 120%;
+  margin-top: 1em;
+}
+
 #figure-modal iframe {
   max-width: 100%;
   max-height: 100%;
