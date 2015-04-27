@@ -13,6 +13,7 @@
     "webcomponentsjs": "~0.5.5",
     "orcid-profile": "peerj/orcid-profile",
     "version-history": "peerj/version-history",
+    "table-of-contents": "peerj/table-of-contents",
     "article-metrics": "peerj/article-metrics"
   },
   "devDependencies": {

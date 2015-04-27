@@ -2,6 +2,10 @@
   overflow-x: hidden;
 }
 
+:host table-of-contents {
+  margin: 1em;
+}
+
 ::content section:last-of-type {
   padding-bottom: 2rem;
 }
