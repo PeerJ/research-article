@@ -20,12 +20,3 @@ html, body, article {
 #figures {
   background-color: white;
 }
-
-.altmetric-embed > div:first-child {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.altmetric-embed p {
-  display: none;
-}
