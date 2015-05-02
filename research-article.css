@@ -62,3 +62,10 @@
     font-size: 100%;
   }
 }
+
+@media print {
+  :host article-metrics,
+  :host table-of-contents {
+    display: none !important;
+  }
+}

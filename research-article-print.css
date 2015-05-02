@@ -236,9 +236,7 @@ tfoot { display:table-footer-group }
 .popover,
 .nav,
 .hide,
-.modal,
-article-metrics,
-table-of-contents {
+.modal {
   display: none !important;
 }
 
