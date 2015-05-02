@@ -237,7 +237,8 @@ tfoot { display:table-footer-group }
 .nav,
 .hide,
 .modal,
-#figure-thumbnails {
+article-metrics,
+table-of-contents {
   display: none !important;
 }
 
