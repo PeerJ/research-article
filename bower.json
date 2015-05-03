@@ -14,6 +14,7 @@
     "orcid-profile": "peerj/orcid-profile",
     "version-history": "peerj/version-history",
     "table-of-contents": "peerj/table-of-contents",
+    "entity-extraction": "peerj/entity-extraction",
     "article-metrics": "peerj/article-metrics"
   },
   "devDependencies": {
