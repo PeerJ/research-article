@@ -103,6 +103,7 @@ figure th {
   padding: 0.25em 0.5em;
   font-size: 110%;
   font-weight: 100;
+  white-space: nowrap;
 }
 
 .author a {
