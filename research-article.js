@@ -2,6 +2,7 @@ Polymer({
   attached: function() {
     this.url = window.location.href;
     this.doi = $('head > meta[name=citation_doi]').attr('content');
+    this.github = $('[rel=source][data-github]').data('github');
 
     this.async(this.references);
     this.async(this.figures);
