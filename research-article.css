@@ -3,7 +3,11 @@
 }
 
 :host table-of-contents {
-  margin: 1em;
+  margin: 1em 0;
+}
+
+:host article-tools {
+  float: right;
 }
 
 ::content section:last-of-type {

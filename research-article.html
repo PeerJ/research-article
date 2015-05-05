@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../orcid-profile/orcid-profile.html">
 <link rel="import" href="../article-metrics/article-metrics.html">
+<link rel="import" href="../article-tools/article-tools.html">
 <link rel="import" href="../version-history/version-history.html">
 <link rel="import" href="../table-of-contents/table-of-contents.html">
 <link rel="import" href="../entity-extraction/entity-extraction.html">
@@ -41,8 +42,14 @@ A research article.
 
     <!-- sidebar -->
     <div class="column column-sidebar">
-      <article-metrics doi="{{ doi }}" url="{{ url }}" github="{{ github }}"></article-metrics>
-      <table-of-contents></table-of-contents>
+      <div>
+        <h2 class="heading">Contents <article-tools url="{{ url }}" doi="{{ doi }}" github="{{ github }}"></article-tools></h2>
+        <div>
+          <table-of-contents></table-of-contents>
+        </div>
+      </div>
+      <article-metrics doi="{{ doi }}" url="{{ url }}" github="{{ github }}" hidden></article-metrics>
+
       <entity-extraction></entity-extraction>
       <content select="footer"></content>
     </div>
