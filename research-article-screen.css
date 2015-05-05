@@ -32,7 +32,7 @@ footer h3 {
   margin-bottom: 0;
 }
 
-article p {
+section > p, section > ol, section > ul {
   font-size: 110%;
   color: #333;
 }
