@@ -8,9 +8,9 @@
   ],
   "main": "research-article.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.5",
+    "polymer": "Polymer/polymer#~0.5.6",
     "bootstrap": "~3.3.4",
-    "webcomponentsjs": "~0.5.5",
+    "webcomponentsjs": "~0.6.1",
     "orcid-profile": "peerj/orcid-profile",
     "version-history": "peerj/version-history",
     "table-of-contents": "peerj/table-of-contents",
