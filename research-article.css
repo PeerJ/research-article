@@ -15,6 +15,17 @@
 }
 
 @media screen and (min-width: 768px) {
+  html, body, article {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  ::content #references {
+    padding-bottom: 2rem;
+  }
+
   :host .column {
     height: 100%;
     overflow: auto;
