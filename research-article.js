@@ -41,7 +41,7 @@ Polymer({
              show: 250,
              hide: 100
         },
-        placement: 'bottom',
+        placement: 'right',
         container: 'body',
         html: true,
         title: this.getAttribute('title'),
