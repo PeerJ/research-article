@@ -16,6 +16,7 @@
     "table-of-contents": "peerj/table-of-contents",
     "entity-extraction": "peerj/entity-extraction",
     "article-tools": "peerj/article-tools",
+    "article-reference": "peerj/article-reference",
     "article-metrics": "peerj/article-metrics"
   },
   "devDependencies": {
