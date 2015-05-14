@@ -25,30 +25,40 @@ Polymer({
     // start from the bottom, so the reference list gets re-ordered correctly
     var links = $('section a').get().reverse();
 
+    // move each reference to the top of the list
     $(links).each(function() {
-        if (typeof referenceLinks[this.href] === 'undefined') {
-            return;
-        }
-
         var referenceIndex = referenceLinks[this.href];
 
-        var reference = references.eq(referenceIndex);
+        if (typeof referenceIndex === 'undefined') {
+          references.eq(referenceIndex).prependTo(referencesList);
+        }
+    });
 
-        // move the reference to the top of the list
-        referencesList.prepend(reference);
+    $(links).each(function() {
+      $(this).popover({
+        trigger: 'hover',
+        delay: {
+             show: 250,
+             hide: 100
+        },
+        placement: 'bottom',
+        container: 'body',
+        html: true,
+        title: this.getAttribute('title'),
+        content: function() {
+          var referenceIndex = referenceLinks[this.href];
 
-        $(this)/*.wrap('<sup/>')*/.popover({
-            trigger: 'hover',
-            html: true,
-            container: 'body',
-            content: function() {
-                return reference.html();
-            }
-        });
+          if (typeof referenceIndex !== 'undefined') {
+            return references.eq(referenceIndex).html();
+          }
 
-        /* jshint ignore:start */
-        this.elementHeight; // force redraw
-        /* jshint ignore:end */
+          var node = document.createElement('article-reference');
+          node.title = this.getAttribute('data-original-title');
+          node.url = this.href;
+
+          return node.go() ? node : '';
+        }
+      });
     });
   },
   figures: function() {
