@@ -14,8 +14,8 @@ Polymer({
     var referencesList = $('#references > ul');
     var references = referencesList.find('li');
 
+    // build an index of URLs in the reference list
     var referenceLinks = {};
-
     references.each(function(i) {
         $(this).find('a[href]').each(function() {
             referenceLinks[this.href] = i;
@@ -34,6 +34,7 @@ Polymer({
         }
     });
 
+    // add a popover to each link in the article
     $(links).each(function() {
       $(this).popover({
         trigger: 'hover',
@@ -53,12 +54,34 @@ Polymer({
           }
 
           var node = document.createElement('article-reference');
-          node.title = this.getAttribute('data-original-title');
+          node.originalTitle = this.getAttribute('data-original-title');
+          node.originalText = this.getAttribute('data-original-text');
           node.url = this.href;
 
           return node.go() ? node : '';
         }
       });
+    });
+
+    // update numbered references
+    var inlineCitations = $('section a').filter(function() {
+      return ['👍', '👎'].indexOf(this.textContent) !== -1;
+    });
+
+    var citedURLs = [];
+
+    inlineCitations.each(function() {
+      var url = this.href;
+      var text = this.textContent.trim();
+
+      var index = citedURLs.indexOf(url);
+
+      if (index === -1) {
+        citedURLs.push(url);
+        index = citedURLs.length;
+      }
+
+      $(this).attr('data-original-text', text).text(index).addClass('citation citation-' + text);
     });
   },
   figures: function() {

@@ -14,6 +14,12 @@
   padding-bottom: 2rem;
 }
 
+::content a.citation {
+  vertical-align: super;
+  line-height: 0;
+  font-size: 80%;
+}
+
 @media screen and (min-width: 768px) {
   html, body, article {
     height: 100%;
