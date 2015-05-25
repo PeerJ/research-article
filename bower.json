@@ -13,7 +13,7 @@
     "webcomponentsjs": "~0.6.1",
     "orcid-profile": "peerj/orcid-profile",
     "version-history": "peerj/version-history",
-    "table-of-contents": "peerj/table-of-contents",
+    "article-contents": "peerj/article-contents",
     "article-entities": "peerj/article-entities",
     "article-tools": "peerj/article-tools",
     "article-reference": "peerj/article-reference",
