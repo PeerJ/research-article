@@ -65,7 +65,15 @@ Polymer({
 
     // update numbered references
     var inlineCitations = $('section a').filter(function() {
-      return ['👍', '👎'].indexOf(this.textContent) !== -1;
+      if (['👍', '👎'].indexOf(this.textContent) !== -1) {
+        return true;
+      }
+
+      if (/^cito:/.test(this.textContent)) {
+        return true;
+      }
+
+      return false;
     });
 
     var citedURLs = [];
@@ -81,7 +89,7 @@ Polymer({
         index = citedURLs.length;
       }
 
-      $(this).attr('data-original-text', text).text(index).addClass('citation citation-' + text);
+      $(this).attr('data-original-text', text).text(index).addClass('citation');
     });
   },
   figures: function() {
