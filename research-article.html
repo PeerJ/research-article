@@ -36,22 +36,35 @@ A research article.
 
     <!-- main column -->
     <div class="column column-main">
+      <!-- article metadata -->
       <content select="header"></content>
+
+      <!-- article sections -->
       <content select="section"></content>
+
+      <!-- entity recognition and info popovers -->
+      <entity-extraction></entity-extraction>
+
+      <!-- annotation and sharing tools -->
+      <article-tools url="{{ url }}" doi="{{ doi }}" github="{{ github }}"></article-tools>
     </div>
 
     <!-- sidebar -->
     <div class="column column-sidebar">
+      <!-- table of contents -->
       <div>
-        <h2 class="heading">Contents <article-tools url="{{ url }}" doi="{{ doi }}" github="{{ github }}"></article-tools></h2>
+        <h2 class="heading">Contents</h2>
         <div>
           <table-of-contents></table-of-contents>
         </div>
       </div>
+
+      <!-- metrics -->
       <article-metrics doi="{{ doi }}" url="{{ url }}" github="{{ github }}" hidden></article-metrics>
 
-      <entity-extraction></entity-extraction>
+      <!-- TODO: figures here? -->
 
+      <!-- article footer -->
       <content select="footer"></content>
     </div>
   </template>
