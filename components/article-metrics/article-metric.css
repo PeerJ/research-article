@@ -1,0 +1,59 @@
+:host {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 100;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+a {
+  /*box-shadow: 0 6px 3px -3px #ddd;*/
+}
+
+a:hover {
+  box-shadow: 0 6px 3px -2px #ccc;
+}
+
+.metric-label,
+.metric-score {
+  display: inline-block;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.metric-label {
+  background: #fff;
+  color: #666;
+  padding: 1px 9px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-color: #ddd;
+}
+
+.metric-label[scored] {
+  border-right: none;
+}
+
+.metric-label:not([scored]) {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.metric-score {
+  padding: 1px 6px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.metric-score {
+  background: white;
+  color: #92C029;
+  border-color: #ddd;
+}
+
+:host(:hover) .metric-score {
+  background: #92C029;
+  border-color: #92C029;
+  color: #fff;
+}

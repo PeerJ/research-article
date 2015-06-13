@@ -1,0 +1,273 @@
+html {
+  font-size: 10pt;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  font-size: 10pt !important;
+  font-family: "Baskerville", "Georgia", serif;
+  background: none;
+  line-height: 1.1;
+  prince-linebreak-magic: auto;
+  prince-image-resolution: 600dpi;
+  prince-image-magic: jpeq-quality(90);
+}
+
+article {
+  display: block !important;
+}
+
+p {
+  text-align: justify;
+  margin-top: 0em;
+  margin-bottom: 0.25em;
+  line-height: 1.2;
+  /*hyphens: auto;*/
+}
+
+/*
+section p:not(:first-of-type) {
+  text-indent: 1em;
+}
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  page-break-after: avoid;
+  font-family: "Baskerville", "Georgia", serif;
+  font-weight: normal;
+  color: #444;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  background: inherit;
+  line-height: 1;
+  color: #00a6fc;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 100%;
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+
+footer > div:first-of-type h2 {
+  margin-top: 0;
+}
+
+footer > * {
+  display: none;
+}
+
+footer > #references {
+  display: block;
+  page-break-before: always;
+}
+
+footer > #figures {
+  display: block;
+  page-break-before: always;
+}
+
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a[href]:after {
+  content: none !important;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+[position="float"] {
+  clear: none;
+}
+
+figure {
+  max-width: 100%;
+  /*float: top unless-fit;*/
+  margin: 1em 0;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+figure img {
+  max-height: 300pt;
+  max-width: 100%;
+  prince-image-resolution: normal;
+}
+
+figure .image-container {
+  text-align: center;
+}
+
+figcaption {
+  text-align: left;
+  padding: 1em 0;
+  font-size: 110%;
+  font-family: "Gill Sans", sans-serif;
+}
+
+figcaption .heading {
+  margin-bottom: 5px;
+}
+
+caption {
+  background: #eef;
+  border-top: 2px solid #ddf;
+  padding: 10px;
+  font-size: 110%;
+  font-family: "Gill Sans", sans-serif;
+}
+
+figure b {
+  color: #00a6fc;
+}
+
+table {
+  border-collapse:collapse;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 80%;
+  max-width: 100%;
+  margin-top: 10pt;
+}
+
+tbody tr:first-of-type td {
+  border-top: 2px solid #ddf;
+}
+
+tbody tr:last-of-type td {
+  border-bottom: 1px solid #ddf;
+}
+
+tbody tr:nth-child(odd) td {
+  background: #eef;
+}
+
+tbody tr:nth-child(odd) td {
+  background: #eef;
+}
+
+td, th {
+  padding: 2px 5px;
+}
+
+table { page-break-inside:auto; page-break-after:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+td    { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+tfoot { display:table-footer-group }
+
+#references ul {
+  font-size: 90%;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#references li {
+  padding-left: 0;
+  margin-bottom: 5pt;
+}
+
+.label {
+  vertical-align: super;
+  font-size: smaller;
+  color: #00a6fc;
+}
+
+[data-section=abstract] {
+  background: #eef;
+  border-bottom: 1px solid #07f;
+  padding: 0 0 1em 0;
+  margin: 2em 0;
+}
+
+[data-section=abstract] h2 {
+  background: #00a6fc;
+  color: white;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  font-size: 100%;
+  font-family: "Helvetica Neue";
+}
+
+[data-section=abstract] p {
+  padding: 0 1em;
+}
+
+#authors {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#authors > span:before {
+  content: "✎";
+}
+
+#authors > span {
+  margin-right: 0.5em;
+}
+
+.inline-list > span:not(:last-child):after {
+  content: ", ";
+}
+
+.popover,
+.nav,
+.hide,
+.modal {
+  display: none !important;
+}
+
+@page {
+  prince-shrink-to-fit: auto;
+  size: A4;
+  margin: 20pt 40pt 40pt 150pt;
+
+  @bottom-right {
+    content: counter(page);
+    vertical-align: top;
+    padding-top: 1em;
+    font-size: 8pt;
+  }
+
+  @bottom-center {
+    content: flow(citation);
+    opacity: 0.7;
+  }
+}
+
+@page:not(:first) {
+  @top-right {
+    content: string(title);
+    font-style: italic;
+  }
+}
+
+h1 { prince-bookmark-level: 1 }
+h2 { prince-bookmark-level: 2 }
+h3 { prince-bookmark-level: 3 }
+h4 { prince-bookmark-level: 4 }
+h5 { prince-bookmark-level: 5 }
+h6 { prince-bookmark-level: 6 }

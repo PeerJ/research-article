@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>article-contents demo</title>
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="article-contents.html">
+    <style>
+    article-contents {
+      background-color: #f6f6f6;
+      border: 1px solid #eee;
+      display: inline-block;
+      padding: 1em;
+      font-family: sans-serif;
+    }
+    </style>
+  </head>
+  <body unresolved>
+    <article>
+      <article-contents></article-contents>
+
+      <header>
+        <h1>Article Title</h1>
+      </header>
+
+      <section>
+        <h2>Section Heading</h2>
+        <p>A paragraph.</p>
+        <section>
+          <h3>Nested Section Heading</h3>
+          <p>A nested paragraph.</p>
+        </section>
+      </section>
+
+      <section>
+        <h2>Another Section Heading</h2>
+      </section>
+
+      <footer>
+        <h2>A header in the footer</h2>
+      </footer>
+    </article>
+  </body>
+</html>

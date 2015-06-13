@@ -1,0 +1,21 @@
+:host {
+  display: inline-block;
+}
+
+.article-tool {
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.article-tool core-icon {
+  color: #777;
+  cursor: pointer;
+}
+
+.article-tool-control core-icon {
+  color: #ccc;
+}
+
+.article-tool:hover core-icon {
+  color: #92C029;
+}

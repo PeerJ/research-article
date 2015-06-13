@@ -1,0 +1,9 @@
+<polymer-element name="article-metric" attributes="score label url tooltip always" noscript>
+  <template>
+    <link rel="stylesheet" href="article-metric.css">
+    <template if="{{ score || always }}">
+      <a href="{{ url }}" target="_blank">
+        <span class="metric-label" scored?="{{ score }}">{{ label }}</span><template if="{{ score }}"><span class="metric-score">{{ score }}</span></template>
+      </a>
+  </template>
+</polymer-element>

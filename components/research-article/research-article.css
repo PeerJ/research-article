@@ -1,0 +1,91 @@
+:host {
+  overflow-x: hidden;
+}
+
+:host table-of-contents {
+  margin: 2rem 0;
+}
+
+:host article-share {
+  float: right;
+}
+
+::content section:last-of-type {
+  padding-bottom: 2rem;
+}
+
+::content a.citation {
+  vertical-align: super;
+  line-height: 0;
+  font-size: 80%;
+}
+
+@media screen and (min-width: 768px) {
+  html, body, article {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  ::content #references {
+    padding-bottom: 2rem;
+  }
+
+  :host .column {
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+  }
+
+  :host .column-main {
+    left: 0;
+    right: 35%;
+    padding: 0 2rem;
+  }
+
+  :host .column-sidebar {
+    left: 65%;
+    right: 0;
+    padding: 0;
+  }
+
+  :host .column-sidebar h2,
+  ::content footer h2 {
+    font-size: 150%;
+    font-weight: 200;
+    margin: 2rem 0;
+    padding: 1rem 1rem;
+    background: #eee;
+  }
+
+  :host .column-sidebar > div > *:not(h2),
+  ::content footer > div > *:not(h2),
+  ::content footer > section > *:not(h2) {
+    margin: 0 1.5rem;
+  }
+
+  :host .column-sidebar div:first-of-type h2 {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :host {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  :host footer h3, ::content footer h3 {
+    font-size: 100%;
+  }
+}
+
+@media print {
+  :host [hidden-print],
+  ::content [hidden-print] {
+    display: none !important;
+  }
+}

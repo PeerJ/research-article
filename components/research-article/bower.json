@@ -1,0 +1,25 @@
+{
+  "name": "research-article",
+  "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "research-article.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.6",
+    "bootstrap": "~3.3.4",
+    "webcomponentsjs": "~0.6.1",
+    "orcid-profile": "peerj/orcid-profile",
+    "version-history": "peerj/version-history",
+    "article-contents": "peerj/article-contents",
+    "article-entities": "peerj/article-entities",
+    "article-tools": "peerj/article-tools",
+    "article-reference": "peerj/article-reference",
+    "article-metrics": "peerj/article-metrics"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3"
+  }
+}

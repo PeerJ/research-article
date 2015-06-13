@@ -1,0 +1,23 @@
+{
+  "name": "article-tools",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-tools.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-icon": "Polymer/core-icon#~0.5.5"
+  },
+  "homepage": "https://github.com/peerj/article-tools",
+  "_release": "543ac99b01",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "543ac99b01db1bd6f041f8f4f65b6b2223133785"
+  },
+  "_source": "git://github.com/peerj/article-tools.git",
+  "_target": "*",
+  "_originalSource": "peerj/article-tools"
+}

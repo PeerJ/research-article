@@ -1,0 +1,14 @@
+{
+  "name": "article-tools",
+  "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-tools.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-icon": "Polymer/core-icon#~0.5.5"
+  }
+}

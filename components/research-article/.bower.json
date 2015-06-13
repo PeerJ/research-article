@@ -1,0 +1,35 @@
+{
+  "name": "research-article",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "research-article.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.6",
+    "bootstrap": "~3.3.4",
+    "webcomponentsjs": "~0.6.1",
+    "orcid-profile": "peerj/orcid-profile",
+    "version-history": "peerj/version-history",
+    "article-contents": "peerj/article-contents",
+    "article-entities": "peerj/article-entities",
+    "article-tools": "peerj/article-tools",
+    "article-reference": "peerj/article-reference",
+    "article-metrics": "peerj/article-metrics"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.2.3"
+  },
+  "homepage": "https://github.com/peerj/research-article",
+  "_release": "8fb4ab6511",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8fb4ab6511b8ef3a7a725744193c25b4e4de5403"
+  },
+  "_source": "git://github.com/peerj/research-article.git",
+  "_target": "master",
+  "_originalSource": "peerj/research-article",
+  "_direct": true
+}

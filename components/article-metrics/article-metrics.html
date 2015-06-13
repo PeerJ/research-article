@@ -1,0 +1,184 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+<link rel="import" href="article-metric.html">
+
+<!--
+Element providing display of an article's metrics data
+
+##### Example
+
+    <article-metrics doi="10.7717/peerj.182"></article-metrics>
+
+@element article-metrics
+@blurb Element providing display of an article's metrics data
+@status alpha
+@homepage https://github.com/peerj/article-metrics
+-->
+<polymer-element name="article-metrics" attributes="doi url github">
+  <template>
+    <link rel="stylesheet" href="article-metrics.css">
+
+    <div id="metrics">
+      <div layout horizontal>
+        <div flex>
+          <template if="{{ altmetric &amp;&amp; altmetric.score }}">
+            <div class="metrics metrics-mention">
+              <div class="heading">Mentions</div>
+
+              <article-metric
+                score="{{ altmetric.cited_by_msm_count }}"
+                label="News"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/news"></article-metric>
+
+              <article-metric
+                score="{{ altmetric.cited_by_feeds_count }}"
+                label="Blogs"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/blogs"></article-metric>
+
+              <article-metric
+                score="{{ altmetric.cited_by_wikipedia_count }}"
+                label="Wikipedia"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/wikipedia"></article-metric>
+            </div>
+
+            <div class="metrics metrics-social">
+              <div class="heading">Social</div>
+
+              <article-metric
+                score="{{ altmetric.cited_by_tweeters_count }}"
+                label="Twitter"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/twitter"></article-metric>
+
+              <article-metric
+                score="{{ altmetric.cited_by_fbwalls_count }}"
+                label="Facebook"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/facebook"></article-metric>
+
+              <article-metric
+                score="{{ altmetric.readers_count }}"
+                label="Mendeley"
+                url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/#mendeley_demographics"></article-metric>
+            </div>
+          </template>
+
+          <template if="{{ (hypothesis &amp;&amp; hypothesis.total) || (genius &amp;&amp; genius.count) || (publons &amp;&amp; publons.count) }}">
+            <div class="metrics metrics-annotations">
+                <div class="heading">Annotations</div>
+
+                <template if="{{ hypothesis &amp;&amp; hypothesis.total }}">
+                  <article-metric
+                    score="{{ hypothesis.total }}"
+                    always="true"
+                    label="Hypothes.is"
+                    url="https://via.hypothes.is/{{ url }}"></article-metric>
+                </template>
+
+                <template if="{{ genius &amp;&amp; genius.count }}">
+                  <article-metric
+                    score="{{ genius.count }}"
+                    always="true"
+                    label="Genius"
+                    url="https://genius.it/{{ url }}"></article-metric>
+                </template>
+
+                <!--
+                <article-metric
+                  score="{{ altmetric.cited_by_peer_review_sites_count }}"
+                  label="Reviews"
+                  url="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/peer-reviews"></article-metric>
+                -->
+
+                <template if="{{ publons &amp;&amp; publons.count }}">
+                  <article-metric
+                    score="{{ publons.count }}"
+                    label="Reviews in Publons"
+                    url="{{ publons.results[0].article._id.url }}"></article-metric>
+                </template>
+
+                <!--
+                <template if="{{ pubpeer &amp;&amp; pubpeer.status == 'good' &amp;&amp; pubpeer.feedbacks }}">
+                  <article-metric
+                    score="{{ pubpeer.feedbacks[0].total_comments }}"
+                    label="Comments in PubPeer"
+                    url="{{ pubpeer.feedbacks[0].url }}"></article-metric>
+                </template>
+                -->
+              </div>
+            </template>
+        </div>
+
+        <template if="{{ altmetric &amp;&amp; altmetric.score }}">
+          <div>
+            <div class="metrics">
+              <div class="heading">Altmetric</div>
+
+              <div>
+                <a href="https://www.altmetric.com/details/{{ altmetric.altmetric_id}}/" target="altmetric" id="altmetric-image">
+                  <img src="{{ altmetric.images.small }}" alt="Altmetric score: {{ altmetric.score }}">
+                </a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <template if="{{ altmetric &amp;&amp; altmetric.tq }}">
+        <div class="quotes">
+          <div class="heading">Quotes from Twitter</div>
+
+          <template repeat="{{ altmetric.tq }}">
+            <blockquote>{{}}</blockquote>
+          </template>
+        </div>
+      </template>
+    </div>
+
+    <!--
+    <template if="{{ url }}">
+      <core-ajax auto
+        url="https://hypothes.is/api/search?uri={{ url }}"
+        response="{{ hypothesis }}"
+        handleAs="json"></core-ajax>
+
+      <core-ajax auto
+        url="https://api.genius.com/search/?url={{ url }}"
+        response="{{ genius }}"
+        handleAs="json"></core-ajax>
+    </template>
+    -->
+
+    <template if="{{ doi }}">
+      <core-ajax auto
+        url="https://api.altmetric.com/v1/doi/{{ doi }}"
+        response="{{ altmetric }}"
+        on-core-response="{{ altmetricResponse }}"
+        handleAs="json"></core-ajax>
+
+      <template if="{{ altmetric.cited_by_peer_review_sites_count }}">
+        <core-ajax auto
+          url="https://publons.com/api/v1/review/"
+          params="{{ { article_doi: doi } }}"
+          headers='{"Accept":"application/json"}'
+          response="{{ publons }}"
+          handleAs="json"></core-ajax>
+
+        <!--
+        <core-ajax auto
+          url="http://api.pubpeer.com/v1/publications/{{ doi }}"
+          params="{{ { devkey: '' } }}"
+          response="{{ pubpeer }}"
+          handleAs="json"></core-ajax>
+        -->
+        </template>
+      </template>
+    </template>
+  </template>
+
+  <script>
+  Polymer({
+    altmetricResponse: function() {
+      this.removeAttribute('hidden');
+    }
+  })
+  </script>
+</polymer-element>

@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element providing a table of contents for an article.
+
+##### Example
+
+  <article>
+    <article-contents></article-contents>
+    <header>
+      <h1>Article title</h1>
+    </header>
+    <section>
+      <h2>Section heading</h2>
+    </section>
+  </article>
+
+@element article-contents
+@blurb Element providing a table of contents for an article.
+@status alpha
+@homepage https://peerj.github.io/article-contents
+-->
+<polymer-element name="article-contents" attributes="indent">
+  <template>
+    <link rel="stylesheet" href="article-contents.css">
+
+    <template repeat="{{ sections }}">
+      <a href="{{ href }}" style="{{ style }}">{{ content }}</a>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      indent: 10,
+      domReady: function() {
+        var nodes = [];
+        var indent = this.indent;
+
+        // the second selector is needed when not using native Shadow DOM
+        var sections = document.querySelectorAll('article > section, article > div > section');
+
+        Array.prototype.forEach.call(sections, function(node) {
+          Array.prototype.forEach.call(node.querySelectorAll('h2,h3,h4,h5,h6'), function(node) {
+            if (!node.id) {
+              node.id = node.textContent.toLowerCase().replace(/\W+/g, '-');
+            }
+
+            var level = node.nodeName.replace(/^H/, '') - 2;
+
+            nodes.push({
+              href: '#' + node.id,
+              content: node.textContent, // TODO: use innerHTML without escaping
+              style: 'margin-left:' + level * indent + 'px',
+            });
+          });
+        });
+
+        this.sections = nodes;
+      }
+    });
+  </script>
+</polymer-element>

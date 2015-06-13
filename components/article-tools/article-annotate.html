@@ -1,0 +1,79 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="article-icons.html">
+
+<!--
+Element providing annotation tools relating to an article.
+
+##### Example
+
+  <article>
+    <article-annotate url="http://example.com/"></article-annotate>
+  </article>
+
+@element article-annotate
+@blurb Element providing annotation tools relating to an article.
+@status alpha
+@homepage https://github.com/peerj/article-tools
+-->
+<polymer-element name="article-annotate" attributes="url">
+  <template>
+    <link rel="stylesheet" href="article-tools.css">
+    <link rel="stylesheet" href="article-annotate.css">
+
+    <div layout horizontal class="article-tools article-tools-annotate"
+      on-mouseleave="{{ hide }}">
+
+      <a class="article-tool" hidden?="{{ !visible }}" target="_blank"
+        title="Annotate this article with hypothes.is"
+        href="{{ hypothesisURL }}"><span class="article-tool-text"><span class="article-tool-prefix">Annotate in </span>Hypothesis</span></a>
+
+      <a class="article-tool" hidden?="{{ !visible }}" target="_blank"
+        title="Annotate this article with Genius"
+        href="{{ geniusURL }}"><span class="article-tool-text"><span class="article-tool-prefix">Annotate in </span>Genius</span></a>
+
+      <template if="{{ publonsURL }}">
+        <a class="article-tool" hidden?="{{ !visible }}" target="_blank"
+          title="Review this article in Publons"
+          href="{{ publonsURL }}"><span class="article-tool-text"><span class="article-tool-prefix">Review in </span>Publons</span></a>
+      </template>
+
+      <span class="article-tool article-tool-control"
+        title="Annotate this article"
+        on-mouseover="{{ show }}"><core-icon icon="article:comment"></core-icon></span>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      visible: false,
+      calculateWidth: function() {
+        this.style.right = $('html /deep/ .column-main').css('right');
+      },
+      domReady: function() {
+        this.calculateWidth();
+        $(window).on('resize', this.calculateWidth.bind(this));
+      },
+      show: function() {
+        this.visible = true;
+      },
+      hide: function() {
+        this.visible = false;
+      },
+      urlChanged: function() {
+        this.hypothesisURL = 'https://via.hypothes.is/' + this.url;
+        this.geniusURL = 'https://genius.it/' + this.url;
+
+        var meta = {
+          doi: $('meta[name=citation_doi]').attr('content'),
+          title: $('header h1').text()
+        };
+
+        if (meta.doi && meta.title) {
+          this.publonsURL = 'https://publons.com/review/create/post/?' + $.param({
+            article_doi: meta.doi,
+            article_title: meta.title,
+          })
+        }
+      }
+    });
+  </script>
+</polymer-element>

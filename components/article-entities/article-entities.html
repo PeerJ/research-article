@@ -1,0 +1,60 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element adding links from detected entities.
+
+##### Example
+
+  <article>
+    <article-entities></article-entities>
+    <section>
+      <p>This paragraph contains a <i>Hippopotamus amphibius</i>.</p>
+    </section>
+  </article>
+
+@element article-entities
+@blurb Element adding links from detected entities.
+@status alpha
+@homepage https://github.com/peerj/article-entities/
+-->
+<polymer-element name="article-entities">
+  <script>
+    Polymer({
+      attached: function() {
+        this.detectSpecies();
+      },
+
+      /**
+       * Detect italics in section paragraphs, which are probably species names.
+       * Add a link to Wikipedia for each species name.
+       */
+      detectSpecies: function() {
+        $('article section p').each(function() {
+          $('i, em', this).each(function() {
+            var node = $(this);
+
+            // exclude if already inside a link
+            if (node.parent('a').length) {
+              return;
+            }
+
+            var text = $.trim(node.text());
+
+            // try to avoid italics that aren't species names
+            if (text.length < 5  // too short
+              || text.indexOf(' ') === -1 // no space
+              || text.indexOf('.') !== -1 // contains a period
+              || !/^[A-Z]/.test(text) // doesn't start with a capital letter
+              ) {
+              return;
+            }
+
+            var url = 'https://en.wikipedia.org/wiki/Special:Search?' + $.param({ search: text });
+            var link = $('<a/>', { target: '_blank', href: url });
+            node.wrap(link);
+          });
+        });
+      }
+    });
+  </script>
+</polymer-element>

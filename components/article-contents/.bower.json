@@ -1,0 +1,22 @@
+{
+  "name": "article-contents",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-contents.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4"
+  },
+  "homepage": "https://github.com/peerj/article-contents",
+  "_release": "99837c04b1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "99837c04b102c5daaf84c0b40fd3da897f21fd46"
+  },
+  "_source": "git://github.com/peerj/article-contents.git",
+  "_target": "*",
+  "_originalSource": "peerj/article-contents"
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>research-article Demo</title>
+
+    <!-- imports -->
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="research-article.html">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" media="screen" href="https://peerj.github.io/paper-themes/paper-now/screen.css">
+    <link rel="stylesheet" media="print" href="https://peerj.github.io/paper-themes/paper-now/print.css">
+
+    <meta name="citation_doi" content="10.7717/peerj.182">
+  </head>
+  <body unresolved>
+    <article is="research-article">
+      <header>
+        <h1>Example Article</h1>
+
+        <section id="section-abstract">
+          <p>This is the abstract.</p>
+        </section>
+      </header>
+
+      <section>
+        <h2>Example Section</h2>
+        <p>Example paragraph</p>
+        <p>This paragraph contains one species, a <i>Hippopotamus amphibius</i>.</p>
+        <p>This paragraph has a DOI citation at the end, which supports this statement<a href="https://dx.doi.org/10.1038/nature14388" title="Cancer: Antibodies regulate antitumour immunity">👍</a>.</p>
+        <p>This paragraph <a href="https://dx.doi.org/10.7717/peerj.182" title="Ontogeny in the tube-crested dinosaur Parasaurolophus (Hadrosauridae) and heterochrony in hadrosaurids">links to an article by DOI</a>.</p>
+        <p>This paragraph <a href="http://www.ncbi.nlm.nih.gov/pubmed/25898005">links to an article by PMID</a>.</p>
+        <p>This paragraph <a href="http://dx.doi.org/10.1126/sciadv.1400103">has a reference in the reference list</a>.</p>
+      </section>
+
+      <footer>
+        <div>
+          <h2>Example Metadata</h2>
+          <div>Some example information.</div>
+        </div>
+
+        <div>
+          <h2>More Example Metadata</h2>
+          <div>Some more example information.</div>
+        </div>
+
+        <div id="references">
+          <h2>References</h2>
+          <ul>
+            <li>
+              <a href="http://dx.doi.org/10.1126/sciadv.1400103">Collapse of the world’s largest herbivores</a>. Ripple et al (2015), Science Advances.
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

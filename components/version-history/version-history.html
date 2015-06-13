@@ -1,0 +1,83 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+<link rel="import" href="../core-selector/core-selector.html">
+
+<!--
+Element providing a list of releases of a GitHub repository.
+
+##### Example
+
+    <version-history github="twbs/bootstrap" url="https://getbootstrap.com/"></version-history>
+
+@element version-history
+@blurb Element providing a list of releases of a GitHub repository
+@status alpha
+@homepage http://github.com/peerj/version-history
+-->
+<polymer-element name="version-history" attributes="github url">
+  <template>
+    <link rel="stylesheet" href="version-history.css">
+
+    <table id="releases-form">
+      <thead>
+        <tr>
+          <th></th>
+          <th>from</th>
+          <th>to</th>
+          <th>
+            <form target="_blank"
+              action="https://github.com/{{ github }}/compare/{{ versionFrom }}...{{ versionTo }}">
+              <button type="submit">compare</button>
+            </form>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr template repeat="{{ release, index in releases }}">
+          <td>
+            <a href="{{ release.html_url }}" target="_blank">{{ release.name }}</a>
+          </td>
+          <td>
+            <template if="{{ index > 0 }}">
+              <input type="radio" name="versionFrom" value="{{ release.tag_name }}">
+            </template>
+          </td>
+          <td>
+            <template if="{{ releases[index + 1 ] }}">
+              <input type="radio" name="versionTo" value="{{ release.tag_name }}">
+            </template>
+          </td>
+          <td>
+            <a href="https://web.archive.org/web/{{ release.published_at | date('yyyymmdd') }}/{{ url }}"
+              target="_blank">{{ release.published_at | date('yyyy-mm-dd') }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <core-selector
+      target="{{ $['releases-form'] }}"
+      itemsSelector="input[type=radio][name=versionFrom]"
+      selected="{{ versionFrom }}"
+      valueattr="value"
+      selectedProperty="checked"
+      activateEvent="change"></core-selector>
+
+    <core-selector
+      target="{{ $['releases-form'] }}"
+      itemsSelector="input[type=radio][name=versionTo]"
+      selected="{{ versionTo }}"
+      valueattr="value"
+      selectedProperty="checked"
+      activateEvent="change"></core-selector>
+
+    <core-ajax
+      auto
+      url="https://api.github.com/repos/{{ github }}/releases"
+      handleAs="json"
+      response="{{ releases }}"></core-ajax>
+  </template>
+
+  <script src="version-history.js"></script>
+</polymer-element>

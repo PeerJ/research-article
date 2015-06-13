@@ -1,0 +1,23 @@
+{
+  "name": "article-metrics",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-metrics.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "core-ajax": "Polymer/core-ajax#~0.5.5"
+  },
+  "homepage": "https://github.com/peerj/article-metrics",
+  "_release": "5927b13507",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5927b13507fff8d2f6898cfd127b176f1a02663f"
+  },
+  "_source": "git://github.com/peerj/article-metrics.git",
+  "_target": "*",
+  "_originalSource": "peerj/article-metrics"
+}

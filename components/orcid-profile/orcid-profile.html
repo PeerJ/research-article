@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<!--
+Element providing a view of an ORCID profile and associated works
+
+##### Example
+
+    <orcid-profile orcid="0000-0002-9341-7985"></orcid-profile>
+
+@element orcid-profile
+@blurb Element providing a view of an ORCID profile and associated works
+@status alpha
+@homepage https://github.com/peerj/orcid-profile
+-->
+<polymer-element name="orcid-profile" attributes="orcid">
+  <template>
+    <link rel="stylesheet" href="orcid-profile.css">
+
+    <template if="{{ profile }}">
+      <!-- name -->
+      <div id="name">{{ profile['orcid-bio']['personal-details']['given-names'].value }}
+        {{ profile['orcid-bio']['personal-details']['family-name'].value }}</div>
+
+      <!-- external identifiers -->
+      <div id="identifiers">
+        <div class="identifier" layout horizontal>
+          <div class="identifier-name">ORCID</div>
+          <div flex>
+            <a href="{{ profile['orcid-identifier'].uri }}">{{ profile['orcid-identifier'].path }}</a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- works -->
+    <template if="{{ works }}">
+      <div class="heading">Works</div>
+
+      <div id="works">
+        <template repeat="{{ work in works }}">
+          <div class="work" layout horizontal>
+            <span class="year">{{ work['publication-date']['year'].value }}</span>
+            <span class="separator">&middot;</span>
+            <template if="{{ work.url }}">
+              <a href="{{ work.url.value }}" class="title" flex target="_blank">{{ work['work-title'].title.value }}</a>
+            </template>
+            <template if="{{ !work.url }}">
+              <span class="title" flex>{{ work['work-title'].title.value }}</span>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <core-ajax auto
+      url="https://pub.orcid.org/{{ orcid }}"
+      headers="{{ { Accept: 'application/json' } }}"
+      handleAs="json"
+      on-core-response="{{ parseProfile }}"></core-ajax>
+
+    <core-ajax auto
+      url="https://pub.orcid.org/{{ orcid }}/orcid-works"
+      headers="{{ { Accept: 'application/json' } }}"
+      handleAs="json"
+      on-core-response="{{ parseWorks }}"></core-ajax>
+  </template>
+
+  <script>
+    Polymer({
+      /**
+       * The `orcid` attribute is a user's ORCID identifier
+       *
+       * @attribute orcid
+       * @type string
+       */
+      orcid: '',
+
+      parseProfile: function(event, details) {
+        this.profile = details.response['orcid-profile'];
+      },
+
+      parseWorks: function(event, details) {
+        this.works = details.response['orcid-profile']['orcid-activities']['orcid-works']['orcid-work'];
+      }
+    });
+  </script>
+</polymer-element>

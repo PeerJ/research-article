@@ -1,0 +1,40 @@
+:host {
+  background: white;
+  margin-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  :host {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+.article-tool-control {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.article-tool core-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.article-tool-text {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  line-height: 2rem;
+  font-weight: 200;
+  color: #444;
+}
+
+.article-tool:hover .article-tool-text {
+  background: #92C029;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .article-tool-prefix {
+    display: none;
+  }
+}

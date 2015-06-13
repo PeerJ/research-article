@@ -1,0 +1,13 @@
+{
+  "name": "article-entities",
+  "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-entities.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4"
+  }
+}

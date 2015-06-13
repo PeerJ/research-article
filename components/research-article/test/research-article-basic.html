@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>research-article</title>
+
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../research-article.html">
+
+</head>
+<body>
+
+  <research-article id="fixture">
+    <header>
+      <h1>Example Article</h1>
+    </header>
+
+    <section>
+      <h2>Example Section</h2>
+      <p>Example paragraph</p>
+    </section>
+
+    <footer>
+      <div>
+        <h2>Example Metadata</h2>
+        <div>Some example information.</div>
+      </div>
+
+      <div>
+        <h2>More Example Metadata</h2>
+        <div>Some more example information.</div>
+      </div>
+    </footer>
+  </research-article>
+
+  <script>
+    var myEl = document.getElementById('fixture');
+
+    suite('<research-article>', function() {
+
+      test('has expected title', function() {
+        assert.equal(myEl.querySelector('h1').textContent, 'Example Article');
+      });
+
+      test('sidebar exists', function() {
+        assert.isObject(myEl.querySelector('#sidebar'));
+      });
+
+    });
+  </script>
+
+</body>
+</html>

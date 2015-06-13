@@ -1,0 +1,23 @@
+{
+  "name": "article-reference",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "article-reference.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-ajax": "Polymer/core-ajax#~0.5.6"
+  },
+  "homepage": "https://github.com/peerj/article-reference",
+  "_release": "027c1f9dbe",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "027c1f9dbe9144276d084c58bfb1cc68787e08f3"
+  },
+  "_source": "git://github.com/peerj/article-reference.git",
+  "_target": "*",
+  "_originalSource": "peerj/article-reference"
+}

@@ -1,0 +1,151 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<!--
+Element displaying metadata for a URL.
+
+##### Example
+
+    <article-reference url="http://dx.doi.org/10.7717/peerj.182"></article-reference>
+
+@element article-reference
+@blurb Element displaying metadata for a URL.
+@status alpha
+@homepage https://github.com/peerj/article-reference
+-->
+<polymer-element name="article-reference" attributes="url originalTitle originalText">
+  <template>
+    <link rel="stylesheet" href="article-reference.css">
+
+    <template if="{{ article }}">
+      <template if="{{ !originalTitle }}">
+        <a class="reference-title" href="{{ url }}">{{ article.title }}</a>
+      </template>
+
+      <div class="reference-authors">
+        <template repeat="{{ article.authors }}">
+          <span class="reference-author">{{ }}</span>
+        </template>
+      </div>
+
+      <div>
+        <template if="{{ article.journal }}">
+          <span class="reference-container">{{ article.journal }}</span>
+        </template>
+
+        <template if="{{ article.journal &amp;&amp; article.year }}">
+          <span class="reference-separator"> &middot; </span>
+        </template>
+
+        <template if="{{ article.year }}">
+          <span class="reference-year">{{ article.year }}</span>
+        </template>
+      </div>
+
+      <template if="{{ originalText }}">
+        <div class="reference-original-text">{{ originalText }}</div>
+      </template>
+    </template>
+
+    <template if="{{ loading }}">
+      <div>Loading…</div>
+    </template>
+
+    <template if="{{ error }}">
+      <div>{{ error }}</div>
+    </template>
+
+    <core-ajax id="crossref"
+      handleAs="json"
+      url="{{ crossrefURL }}"
+      on-core-response="{{ handleCrossRefResponse }}"></core-ajax>
+
+    <core-ajax id="pubmed"
+      handleAs="json"
+      url="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
+      params="{{ pubmedParams }}"
+      on-core-response="{{ handlePubMedResponse }}"></core-ajax>
+  </template>
+  <script>
+    Polymer({
+      url: '',
+      originalTitle: '',
+      originalText: '',
+      go: function() {
+        this.article = null;
+
+        var a = document.createElement('a');
+        a.href = this.url;
+
+        var id = a.pathname.substring(1);
+
+        switch (a.hostname) {
+          case 'dx.doi.org':
+            this.doi = id;
+            this.crossrefURL = 'https://api.crossref.org/works/' + encodeURIComponent(this.doi);
+            this.loading = true;
+            this.$.crossref.go();
+            return 'doi';
+
+          case 'pubmed.gov':
+          case 'www.ncbi.nlm.nih.gov':
+            this.pmid = id.replace(/^pubmed\//, '');
+
+            this.pubmedParams = {
+              db: 'pubmed',
+              retmode: 'json',
+              id: this.pmid
+            };
+
+            this.loading = true;
+            this.$.pubmed.go();
+            return 'pubmed';
+
+          default:
+            this.article = null;
+            return false;
+        }
+      },
+      handleCrossRefResponse: function(event, details) {
+        this.loading = false;
+
+        if (details.response.status !== 'ok') {
+          this.error = 'Unable to fetch article details';
+          return;
+        }
+
+        var item = details.response.message;
+
+        this.article = {
+          type: item.type,
+          title: item.title[0].trim(),
+          authors: item.author.map(function(author) {
+            return [author.given, author.family].join(' ');
+          }),
+          journal: item['container-title'][0],
+          year: item.issued['date-parts'][0][0],
+        };
+      },
+      handlePubMedResponse: function(event, details) {
+        this.loading = false;
+
+        if (!details.response.result[this.pmid]) {
+          this.error = 'Unable to fetch article details';
+          return;
+        }
+
+        var item = details.response.result[this.pmid];
+
+        this.article = {
+          type: 'journal-article',
+          title: item.title,
+          authors: item.authors.map(function(author) {
+            return author.name;
+          }),
+          journal: item.fulljournalname,
+          year: item.pubdate.match(/^\d+/)[0],
+        };
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic");
+
+body {
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+header {
+  margin: 4rem 0;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 2em;
+  margin: 0;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 100;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+section h3 {
+  font-size: 140%;
+}
+
+footer h3 {
+  font-size: 100%;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+section > p, section > ol, section > ul {
+  font-size: 110%;
+  color: #333;
+}
+
+.column-sidebar {
+  overflow-x: hidden;
+}
+
+footer dt {
+  font-weight: 100;
+  font-size: 120%;
+  margin-top: 1em;
+}
+
+#figure-modal iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#figure-modal .table {
+  margin-bottom: 0;
+}
+
+[data-section=abstract] p {
+  font-size: 120%;
+}
+
+[data-section=abstract] p:last-of-type {
+  margin-bottom: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+[data-section=abstract] h2 {
+  display: none;
+}
+
+.inline-list > span:not(:last-child):after {
+  content: ", ";
+}
+
+figure img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+figure table {
+  background-color: white;
+}
+
+figure th {
+  background-color: #eee;
+}
+
+#authors {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  line-height: 1;
+}
+
+.author {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.25em 0.5em;
+  font-size: 110%;
+  font-weight: 100;
+  white-space: nowrap;
+}
+
+.author a {
+  color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.author a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.author [itemprop=email] {
+  color: #aaa;
+  position: relative;
+  line-height: 0;
+  top: -4px;
+}
+
+.author [itemprop=sameAs] {
+  display: inline-block;
+  color: transparent;
+  width: 1em;
+  position: relative;
+  top: -2px;
+  margin-right: 2px;
+}
+
+.author a[data-orcid] {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  background: url("https://orcid.org/sites/default/files/images/orcid_16x16.png") left center no-repeat;
+}
+
+#affiliations .affiliation-location {
+  font-weight: 200;
+}
+
+#figures > figure {
+  padding-top: 1rem;
+}
+
+#figures > figure:first-of-type {
+  margin-top: -1rem;
+}
+
+#figures > figure:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.article-date {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 120%;
+  font-weight: 100;
+}
+
+#orcid-modal orcid-profile {
+  padding: 2rem;
+  height: 100%;
+  overflow-y: auto;
+}

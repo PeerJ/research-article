@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  padding: 1rem;
+  font-weight: 100;
+  background-color: #f6f6f6;
+}
+
+.heading {
+  font-weight: 100;
+  font-size: 130%;
+  margin-bottom: 0.5rem;
+}
+
+.metrics:not(:first-of-type) .heading {
+  margin-top: 0.5rem;
+}
+
+.quotes {
+  margin-top: 1rem;
+}
+
+blockquote {
+  margin: 0.5rem 0;
+}
+
+blockquote:before,
+blockquote:after {
+  color: #777;
+  line-height: 0;
+}
+
+blockquote:before {
+  content: "“";
+}
+
+blockquote:after {
+  content: "”";
+}
+
+#metrics {
+  margin: 0.5rem 0;
+}
+
+#altmetric-image {
+  display: block;
+  margin-right: 1rem;
+}
