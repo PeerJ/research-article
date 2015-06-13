@@ -44,16 +44,16 @@ A research article.
       <content select="section"></content>
 
       <!-- entity recognition and info popovers -->
-      <article-entities></article-entities>
+      <article-entities hidden-print></article-entities>
 
       <!-- annotation tools -->
-      <article-annotate url="{{ url }}"></article-annotate>
+      <article-annotate url="{{ url }}" hidden-print></article-annotate>
     </div>
 
     <!-- sidebar -->
     <div class="column column-sidebar">
       <!-- table of contents -->
-      <div>
+      <div hidden-print>
         <h2 class="heading">Contents <article-share url="{{ url }}" github="{{ github }}"></article-share></h2>
         <div>
           <article-contents></article-contents>
@@ -61,7 +61,7 @@ A research article.
       </div>
 
       <!-- metrics -->
-      <article-metrics doi="{{ doi }}" url="{{ url }}" github="{{ github }}" hidden></article-metrics>
+      <article-metrics doi="{{ doi }}" url="{{ url }}" github="{{ github }}" hidden hidden-print></article-metrics>
 
       <!-- TODO: figures here? -->
 
