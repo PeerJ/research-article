@@ -66,8 +66,7 @@
     margin: 0 1.5rem;
   }
 
-  :host .column-sidebar div:first-of-type h2,
-  ::content footer div:first-of-type h2 {
+  :host .column-sidebar div:first-of-type h2 {
     margin-top: 0;
   }
 }
