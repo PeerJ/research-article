@@ -137,7 +137,8 @@ figure th {
   height: 16px;
   width: 16px;
   display: inline-block;
-  background: url("https://orcid.org/sites/default/files/images/orcid_16x16.png") left center no-repeat;
+  background: url("https://orcid.org/sites/default/files/images/orcid_32x32.png") left center no-repeat;
+  background-size: 16px;
 }
 
 #affiliations .affiliation-location {
